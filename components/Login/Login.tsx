@@ -26,8 +26,10 @@ export const Login = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "https://demo2910689.mockable.io/login",
-        { params: data }
+        `${process.env.NEXT_PUBLIC_SERVICE_WEB}login`,
+        {
+          params: data,
+        }
       );
       checkUserExists(response.data.login);
       setLoading(false);

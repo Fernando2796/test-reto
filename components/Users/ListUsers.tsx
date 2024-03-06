@@ -10,7 +10,9 @@ export const ListUsers = () => {
 
   const loadUsers = async () => {
     try {
-      const response = await axios.get("https://demo2910689.mockable.io/table");
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_SERVICE_WEB}table`
+      );
       setListUsers(response.data.table);
     } catch (error) {}
   };

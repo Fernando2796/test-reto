@@ -10,9 +10,5 @@ export const PrivateRoutes = ({ children }: { children: ReactNode }) => {
     (state: RootState) => state.userStatus.authorized
   );
 
-  if (!isAuthorized) {
-    return router.push("/");
-  } else {
-    return children;
-  }
+  return isAuthorized ? children : <>{router.push("/")}</>;
 };
