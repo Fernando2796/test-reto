@@ -4,11 +4,14 @@ import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/navigation";
 import LogoReto from "@/Images/logo-white.jpeg";
+import { useDispatch } from "react-redux";
+import { logout } from "../Login/redux/loginSlice";
 
 export const Navbar = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const logoutSession = () => {
-    localStorage.removeItem("isAuthorized");
+    dispatch(logout());
     router.push("/");
   };
   return (

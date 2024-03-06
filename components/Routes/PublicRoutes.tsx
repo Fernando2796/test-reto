@@ -1,14 +1,13 @@
 "use client";
 
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/config/store";
 export const PublicRoutes = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
-  const isAuthorized = localStorage.getItem("isAuthorized");
-
-  return !isAuthorized || isAuthorized === "false" ? (
-    children
-  ) : (
-    <>{router.push("/ListUsers")}</>
+  const isAuthorized = useSelector(
+    (state: RootState) => state.userStatus.authorized
   );
+  return !isAuthorized ? children : <>{router.push("/ListUsers")}</>;
 };

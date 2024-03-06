@@ -23,8 +23,8 @@ export const ListUsers = () => {
       : listUsers;
   }, [userName, listUsers]);
 
-  const deleteUser = (id: number) => {
-    const updateListUser = listUsers.filter((user, index) => index !== id);
+  const deleteUser = (name: string) => {
+    const updateListUser = listUsers.filter((user) => user.nombre !== name);
     setListUsers(updateListUser);
   };
   useEffect(() => {
@@ -95,7 +95,7 @@ export const ListUsers = () => {
               <td className="px-6 py-4">
                 <button
                   className="font-medium text-red-600 light:text-blue-500 hover:underline"
-                  onClick={() => deleteUser(index)}
+                  onClick={() => deleteUser(user.nombre)}
                 >
                   Delete
                 </button>

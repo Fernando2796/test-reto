@@ -2,13 +2,17 @@
 
 import React, { ReactNode, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/config/store";
 export const PrivateRoutes = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
-  const isAuthorized = localStorage.getItem("isAuthorized");
-
-  return isAuthorized && isAuthorized !== "false" ? (
-    children
-  ) : (
-    <>{router.push("/")}</>
+  const isAuthorized = useSelector(
+    (state: RootState) => state.userStatus.authorized
   );
+
+  if (!isAuthorized) {
+    return router.push("/");
+  } else {
+    return children;
+  }
 };

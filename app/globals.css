@@ -14,7 +14,7 @@ body {
   background: rgb(248 250 252);
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 }
 
 @layer utilities {

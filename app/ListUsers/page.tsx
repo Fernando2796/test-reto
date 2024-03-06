@@ -1,3 +1,5 @@
+"use client";
+
 import { ListUsers } from "@/components/Users/ListUsers";
 import React from "react";
 
